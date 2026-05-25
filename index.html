@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Gratis — Shopee Store Makeover</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0f0f0f;
+  --white: #fafaf8;
+  --accent: #00c853;
+  --gray-1: #f5f5f2;
+  --gray-2: #e8e8e4;
+  --gray-3: #a0a09a;
+  --gray-4: #5a5a56;
+  --border: #e8e8e4;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--white);
+  color: var(--black);
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* HERO STRIP */
+.top-bar {
+  background: var(--black);
+  padding: 32px 20px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.top-bar::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,200,83,0.25) 0%, transparent 60%);
+  pointer-events: none;
+}
+.top-bar-inner { position: relative; z-index: 1; }
+
+.slots-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(0,200,83,0.15); border: 1px solid rgba(0,200,83,0.3);
+  color: var(--accent); padding: 5px 14px; border-radius: 100px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+.slots-badge span { animation: blink 1.5s ease infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.top-bar h1 {
+  font-size: 26px; font-weight: 800; color: #fff;
+  line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 10px;
+}
+.top-bar h1 em { color: var(--accent); font-style: normal; }
+.top-bar p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* SLOT COUNTER */
+.slots-row {
+  display: flex; justify-content: center; gap: 8px;
+  padding: 20px 20px 0;
+}
+.slot-dot {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+}
+.slot-open { background: var(--accent); color: var(--black); }
+.slot-filled { background: var(--gray-2); color: var(--gray-3); text-decoration: line-through; }
+.slots-label { text-align: center; font-size: 12px; color: var(--gray-3); margin-top: 8px; padding-bottom: 4px; }
+
+/* WHAT YOU GET */
+.benefits {
+  margin: 24px 20px 0;
+  background: var(--gray-1);
+  border-radius: 16px; padding: 20px;
+}
+.benefits-title { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--gray-3); text-transform: uppercase; margin-bottom: 14px; }
+.benefit-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--gray-2); font-size: 14px;
+}
+.benefit-item:last-child { border-bottom: none; }
+.benefit-check { color: var(--accent); font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.benefit-text { color: var(--gray-4); line-height: 1.5; }
+.benefit-text strong { color: var(--black); font-weight: 600; }
+
+/* FORM */
+.form-wrap { padding: 28px 20px 0; }
+.form-title { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 4px; }
+.form-sub { font-size: 13px; color: var(--gray-4); margin-bottom: 24px; line-height: 1.6; }
+
+.field { margin-bottom: 16px; }
+.field label {
+  display: block; font-size: 12px; font-weight: 600;
+  color: var(--gray-4); margin-bottom: 6px; letter-spacing: 0.2px;
+}
+.field input, .field textarea, .field select {
+  width: 100%; padding: 13px 14px;
+  border: 1.5px solid var(--border); border-radius: 12px;
+  font-size: 14px; font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--black); background: #fff; outline: none;
+  transition: border-color 0.15s;
+  -webkit-appearance: none; appearance: none;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  border-color: var(--accent);
+}
+.field textarea { resize: none; line-height: 1.6; }
+
+.char-count { font-size: 11px; color: var(--gray-3); text-align: right; margin-top: 4px; }
+
+.submit-btn {
+  width: 100%; padding: 16px;
+  background: var(--accent); color: var(--black);
+  border: none; border-radius: 100px;
+  font-size: 16px; font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer; margin-top: 8px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.submit-btn:active { transform: scale(0.98); }
+.submit-btn:hover { box-shadow: 0 6px 24px rgba(0,200,83,0.4); }
+
+.disclaimer {
+  font-size: 11px; color: var(--gray-3);
+  text-align: center; margin-top: 14px; line-height: 1.6; padding: 0 8px;
+}
+
+.submit-btn:disabled { opacity: 0.8; cursor: not-allowed; transform: none !important; }
+.spinner {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-top-color: var(--black);
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* SUCCESS STATE */
+.success-screen {
+  display: none;
+  text-align: center;
+  padding: 60px 32px;
+}
+.success-screen .icon { font-size: 56px; margin-bottom: 20px; }
+.success-screen h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 10px; }
+.success-screen p { font-size: 14px; color: var(--gray-4); line-height: 1.7; max-width: 300px; margin: 0 auto; }
+.field-hint { font-size: 11px; margin-top: 5px; display: none; }
+.field-hint.visible { display: block; }
+.field-hint.error { color: #e53935; }
+.field-hint.ok { color: var(--accent); }
+.field input.invalid { border-color: #e53935 !important; }
+.field input.valid { border-color: var(--accent) !important; }
+</style>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="slots-badge"><span>●</span> Terbatas</div>
+    <h1>Makeover toko<br>Shopee kamu <em>gratis.</em></h1>
+    <p>Foto, judul, deskripsi & banner — semua saya benerin.<br>Khusus 3 toko terpilih, tanpa biaya apapun.</p>
+  </div>
+</div>
+
+<!-- SLOT COUNTER -->
+<div class="slots-row">
+  <div class="slot-open">1</div>
+  <div class="slot-open">2</div>
+  <div class="slot-open">3</div>
+</div>
+<p class="slots-label">3 slot tersisa — siapa cepat dia dapat</p>
+
+<!-- WHAT THEY GET -->
+<div class="benefits">
+  <p class="benefits-title">Yang kamu dapat</p>
+  <div class="benefit-item">
+    <span class="benefit-check">✓</span>
+    <span class="benefit-text"><strong>Editing 1 foto produk</strong> — bersih, cerah, siap upload</span>
+  </div>
+  <div class="benefit-item">
+    <span class="benefit-check">✓</span>
+    <span class="benefit-text"><strong>Judul produk baru</strong> yang SEO-friendly di Shopee</span>
+  </div>
+  <div class="benefit-item">
+    <span class="benefit-check">✓</span>
+    <span class="benefit-text"><strong>Deskripsi produk</strong> yang informatif & persuasif</span>
+  </div>
+  <div class="benefit-item">
+    <span class="benefit-check">✓</span>
+    <span class="benefit-text">Gratis 100% — syaratnya cuma izinin jadi portofolio</span>
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="form-wrap" id="form-section">
+  <h2 class="form-title">Daftar sekarang</h2>
+  <p class="form-sub">Saya akan pilih 3 toko yang paling butuh — isi sejujurnya ya.</p>
+
+  <div class="field">
+    <label>Nama kamu</label>
+    <input id="f-nama" type="text" placeholder="Nama lengkap atau panggilan">
+  </div>
+
+  <div class="field">
+    <label>Nomor WhatsApp</label>
+    <input id="f-wa" type="tel" placeholder="08xxxxxxxxxx" inputmode="numeric" oninput="validateWA(this)" onblur="validateWA(this, true)">
+    <p class="field-hint" id="hint-wa"></p>
+  </div>
+
+  <div class="field">
+    <label>Nama toko Shopee</label>
+    <input id="f-toko" type="text" placeholder="Persis seperti di Shopee">
+  </div>
+
+  <div class="field">
+    <label>Link toko Shopee kamu</label>
+    <input id="f-link" type="url" placeholder="https://shopee.co.id/nama_toko" oninput="validateLink(this)" onblur="validateLink(this, true)">
+    <p class="field-hint" id="hint-link"></p>
+  </div>
+
+  <div class="field">
+    <label>Produk mana yang mau di-makeover? <span style="color:var(--gray-3);font-weight:400">(nama + masalahnya)</span></label>
+    <textarea id="f-produk" rows="3" placeholder="Misal: Serum vitamin C saya, fotonya gelap dan judulnya asal-asalan, belum pernah terjual..." oninput="updateCount(this, 'cnt-produk', 200)"></textarea>
+    <p class="char-count"><span id="cnt-produk">0</span>/200</p>
+  </div>
+
+  <div class="field">
+    <label>Kenapa toko kamu yang layak dipilih? <span style="color:var(--gray-3);font-weight:400">(jujur aja)</span></label>
+    <textarea id="f-alasan" rows="3" placeholder="Ceritain kondisi toko kamu sekarang — sudah berapa lama buka, kendalanya apa, dll." oninput="updateCount(this, 'cnt-alasan', 300)"></textarea>
+    <p class="char-count"><span id="cnt-alasan">0</span>/300</p>
+  </div>
+
+  <p class="err-msg" id="form-err">Lengkapi semua field dulu ya.</p>
+
+  <button class="submit-btn" id="submit-btn" onclick="submitForm()">
+    <div class="spinner" id="spinner"></div>
+    <span id="btn-text">Kirim Pendaftaran →</span>
+  </button>
+
+  <p class="disclaimer">
+    Saya akan seleksi dan hubungi 3 yang terpilih via WA dalam 1–2 hari.<br>
+    Tidak ada biaya tersembunyi.
+  </p>
+</div>
+
+<!-- SUCCESS -->
+<div class="success-screen" id="success-screen">
+  <div class="icon">🎉</div>
+  <h2>Pendaftaran masuk!</h2>
+  <p>Saya akan review dan hubungi kamu via WA dalam 1–2 hari kalau kamu terpilih. Pantau WA kamu ya.</p>
+</div>
+
+<script>
+// Ganti dengan URL Google Apps Script kamu (lihat panduan di bawah)
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwV87xzdCMCXeKQGzf7GwTMIv_-H1lb8hbUavfxDNGjWOmt_jvN9EzH-PdB9pmuaQg/exec';
+
+function updateCount(el, counterId, max) {
+  const len = el.value.length;
+  document.getElementById(counterId).textContent = len;
+  if (len > max) el.value = el.value.substring(0, max);
+}
+
+function validateWA(el, isBlur) {
+  // Strip semua non-digit
+  el.value = el.value.replace(/[^0-9]/g, '');
+  const hint = document.getElementById('hint-wa');
+  const val = el.value;
+  if (!val) { hint.className = 'field-hint'; el.className = ''; return; }
+
+  const valid = /^(08|628)\d{7,12}$/.test(val);
+  hint.classList.add('visible');
+  if (valid) {
+    hint.className = 'field-hint visible ok';
+    hint.textContent = '✓ Format nomor valid';
+    el.classList.remove('invalid'); el.classList.add('valid');
+  } else {
+    hint.className = 'field-hint visible error';
+    hint.textContent = 'Gunakan format 08xxxxxxxxxx atau 628xxxxxxxxx';
+    el.classList.remove('valid'); el.classList.add('invalid');
+  }
+}
+
+function validateLink(el, isBlur) {
+  const hint = document.getElementById('hint-link');
+  const val = el.value.trim();
+  if (!val) { hint.className = 'field-hint'; el.className = ''; return; }
+
+  let valid = false;
+  try {
+    const url = new URL(val);
+    valid = url.protocol === 'https:' && url.hostname.includes('shopee');
+  } catch(e) {}
+
+  hint.classList.add('visible');
+  if (valid) {
+    hint.className = 'field-hint visible ok';
+    hint.textContent = '✓ Link Shopee valid';
+    el.classList.remove('invalid'); el.classList.add('valid');
+  } else {
+    hint.className = 'field-hint visible error';
+    hint.textContent = 'Harus berupa link Shopee yang valid (https://shopee.co.id/...)';
+    el.classList.remove('valid'); el.classList.add('invalid');
+  }
+}
+
+async function submitForm() {
+  const nama   = document.getElementById('f-nama').value.trim();
+  const wa     = document.getElementById('f-wa').value.trim();
+  const toko   = document.getElementById('f-toko').value.trim();
+  const link   = document.getElementById('f-link').value.trim();
+  const produk = document.getElementById('f-produk').value.trim();
+  const alasan = document.getElementById('f-alasan').value.trim();
+  const err    = document.getElementById('form-err');
+  const btn    = document.querySelector('.submit-btn');
+
+  // Trigger validasi visual dulu
+  validateWA(document.getElementById('f-wa'), true);
+  validateLink(document.getElementById('f-link'), true);
+
+  const waValid  = /^(08|628)\d{7,12}$/.test(wa);
+  let linkValid  = false;
+  try { const u = new URL(link); linkValid = u.protocol === 'https:' && u.hostname.includes('shopee'); } catch(e) {}
+
+  if (!nama || !wa || !toko || !link || !produk || !alasan || !waValid || !linkValid) {
+    err.textContent = !waValid ? 'Format nomor WA tidak valid.' : !linkValid ? 'Link Shopee tidak valid.' : 'Lengkapi semua field dulu ya.';
+    err.style.display = 'block';
+    document.querySelector('.field input.invalid')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  err.style.display = 'none';
+
+  btn.disabled = true;
+  document.getElementById('spinner').style.display = 'block';
+  document.getElementById('btn-text').textContent = 'Mengirim...';
+
+  try {
+    const params = new URLSearchParams({
+      timestamp: new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' }),
+      nama, wa, toko, link, produk, alasan
+    });
+    await fetch(SCRIPT_URL + '?' + params.toString(), {
+      method: 'GET',
+      mode: 'no-cors'
+    });
+  } catch (e) {
+    // no-cors expected, data tetap terkirim
+  }
+
+  document.getElementById('form-section').style.display = 'none';
+  document.getElementById('success-screen').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
